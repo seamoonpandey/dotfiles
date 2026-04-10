@@ -1,0 +1,23 @@
+#!/bin/bash
+
+case "$1" in
+  start)
+    cd ~/dotfiles/postgres
+    docker compose up -d
+    ;;
+  stop)
+    cd ~/dotfiles/postgres
+    docker compose down
+    ;;
+  restart)
+    cd ~/dotfiles/postgres
+    docker compose down
+    docker compose up -d
+    ;;
+  logs)
+    docker logs postgres
+    ;;
+  *)
+    echo "Usage: postgres {start|stop|restart|logs}"
+    ;;
+esac
